@@ -57,6 +57,12 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// set title middleware
+app.use(function(req, res, next) {
+  res.locals.title = 'Online Shop';
+  next();
+});
+
 // Mount routes
 app.use('/', indexRouter);
 app.use('/posts', postsRouter);
