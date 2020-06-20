@@ -14,9 +14,9 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 // require routes
-const indexRouter = require('./routes/index');
-const postsRouter = require('./routes/posts');
-const reviewsRouter = require('./routes/reviews');
+const index = require('./routes/index');
+const posts = require('./routes/posts');
+const reviews = require('./routes/reviews');
 
 const app = express();
 // connect to the database
@@ -77,9 +77,9 @@ app.use(function(req, res, next) {
 });
 
 // Mount routes
-app.use('/', indexRouter);
-app.use('/posts', postsRouter);
-app.use('/posts/:id/reviews', reviewsRouter);
+app.use('/', index);
+app.use('/posts', posts);
+app.use('/posts/:id/reviews', reviews);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
