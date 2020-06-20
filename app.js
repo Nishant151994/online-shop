@@ -20,7 +20,7 @@ const reviewsRouter = require('./routes/reviews');
 
 const app = express();
 // connect to the database
-mongoose.connect('mongodb://localhost:27017/online-shop-mapbox', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/online-shop', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -59,6 +59,11 @@ passport.deserializeUser(User.deserializeUser());
 
 // set local variables middleware
 app.use(function(req, res, next) {
+  req.user = {
+        '_id' : '5eedb6d5b8a4e008486980fd',
+        'username' : 'nis'
+  }
+  res.locals.currentUser = req.user;
   // set default page title
   res.locals.title = 'Online Shop';
   // set success flash message
