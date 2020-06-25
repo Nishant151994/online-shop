@@ -1,9 +1,12 @@
-<% layout('layouts/boilerplate') -%>
-<h1>Posts Index!</h1>
+<% layout('layouts/postsIndex') -%>
 
 
-<div class="container-fluid">
+
+<div class="container-fluid p-5">
 	<div class="row">
+		<div class="col-12">
+			<h1>Posts Index!</h1>
+		</div>
 		<div class="col-4">
 			<% include ../partials/searchFilter %>
 		</div>
@@ -11,7 +14,6 @@
 			<div id="map"></div>
 		</div>
 	</div>
-</div>
 
 <% include ../partials/paginatePosts %>
 
@@ -27,6 +29,7 @@
 
 <% include ../partials/paginatePosts %>
 
+</div>
 <script type="text/javascript">
  	mapboxgl.accessToken = "<%= mapBoxToken %>";
  	var posts = {features: <%- JSON.stringify(posts.docs) %>};
